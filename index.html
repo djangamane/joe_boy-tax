@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Construction Tax Rescue - Same-Day $497 Filing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root{--orange:#FF6B00;--black:#111;--grey:#f5f5f5}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+    body{background:var(--grey);color:var(--black)}
+    .container{max-width:500px;margin:auto;background:#fff}
+    header{background:var(--orange);color:#fff;padding:20px;text-align:center}
+    header h1{font-size:26px;margin-bottom:8px}
+    header p{font-size:16px}
+    .hero{padding:20px;text-align:center}
+    .hero img{width:100%;border-radius:8px}
+    .badge{background:var(--orange);color:#fff;display:inline-block;padding:6px 12px;border-radius:20px;font-size:12px;margin-bottom:10px}
+    .guarantee{background:#e6f7ff;border-left:5px solid #1890ff;padding:15px;margin:20px 0;font-size:14px}
+    form{padding:20px}
+    label{display:block;margin:12px 0 4px;font-weight:bold;font-size:14px}
+    input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:4px;font-size:16px}
+    button{width:100%;background:var(--orange);color:#fff;padding:14px;border:none;border-radius:4px;font-size:18px;font-weight:bold;margin-top:15px;cursor:pointer}
+    button:hover{filter:brightness(1.1)}
+    .footer{text-align:center;padding:20px;font-size:12px;color:#666}
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Construction Tax Rescue</h1>
+    <p>Same-Day Filing - $1K+ Deduction Guarantee - Scan Before You Cash That Next Check</p>
+  </header>
+
+  <div class="hero">
+    <span class="badge">17 WRITE-OFFS YOUR BOSS NEVER TOLD YOU ABOUT</span>
+    <img src="joeboy_hero-Photoroom.png" alt="Ryan on job site holding refund check">
+    <p>Joseph Walker, EA and former pipefitter - saved 247 tradesmen an average of <strong>$3,247</strong> last season.</p>
+  </div>
+
+  <div class="guarantee">
+    Guarantee: Find you at least <strong>$1,000 more</strong> than last year's preparer or you do not pay.
+  </div>
+
+  <form action="https://submit-form.com/YOUR_FORM_ID" method="POST">
+    <input type="hidden" name="utm_source" value="">
+    <input type="hidden" name="utm_medium" value="">
+    <input type="hidden" name="utm_campaign" value="">
+
+    <label>Your Trade *</label>
+    <select name="trade" required>
+      <option value="">Choose...</option>
+      <option>Pipefitter</option>
+      <option>Electrician</option>
+      <option>Concrete</option>
+      <option>HVAC</option>
+      <option>Other</option>
+    </select>
+
+    <label>Primary GC You Work For *</label>
+    <input type="text" name="primary_gc" placeholder="e.g. Miller Industrial" required>
+
+    <label>Cell Number * (we will text your cheat-sheet + booking link)</label>
+    <input type="tel" name="phone" placeholder="555-123-4567" required>
+
+    <label>Biggest Tax Headache Right Now? *</label>
+    <input type="text" name="pain" placeholder="per-diem, lost receipts, 1099 mess..." required>
+
+    <button type="submit">GET MY 48-HR SLOT -></button>
+  </form>
+
+  <div class="footer">
+    (C) 2026 A Bit of Advice LLC | Katy TX <br>
+    Joseph Walker | 781-775-5842 | joseph@abitofadvicellc.com
+  </div>
+</div>
+
+<script>
+  const params=new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
+    if(params.get(p)) document.querySelector(`input[name="${p}"]`).value=params.get(p);
+  });
+</script>
+</body>
+</html>
