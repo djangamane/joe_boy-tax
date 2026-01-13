@@ -22,6 +22,9 @@
     input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:4px;font-size:16px}
     button{width:100%;background:var(--orange);color:#fff;padding:14px;border:none;border-radius:4px;font-size:18px;font-weight:bold;margin-top:15px;cursor:pointer}
     button:hover{filter:brightness(1.1)}
+    .form-status{margin-top:12px;font-size:14px}
+    .form-status.success{color:#0b6d2f}
+    .form-status.error{color:#a40000}
     .footer{text-align:center;padding:20px;font-size:12px;color:#666}
   </style>
 </head>
@@ -42,7 +45,7 @@
     Guarantee: Find you at least <strong>$1,000 more</strong> than last year's preparer or you do not pay.
   </div>
 
-  <form action="https://submit-form.com/YOUR_FORM_ID" method="POST">
+  <form id="lead-form" action="#" method="POST" novalidate>
     <input type="hidden" name="utm_source" value="">
     <input type="hidden" name="utm_medium" value="">
     <input type="hidden" name="utm_campaign" value="">
@@ -67,6 +70,7 @@
     <input type="text" name="pain" placeholder="per-diem, lost receipts, 1099 mess..." required>
 
     <button type="submit">GET MY 48-HR SLOT -></button>
+    <div id="form-status" class="form-status" aria-live="polite"></div>
   </form>
 
   <div class="footer">
@@ -76,9 +80,45 @@
 </div>
 
 <script>
+  const webhookUrl = "https://hook.us2.make.com/9vwvgverq5w7pmvcjhc9a1o3btamdxxp";
   const params=new URLSearchParams(window.location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
     if(params.get(p)) document.querySelector(`input[name="${p}"]`).value=params.get(p);
+  });
+
+  const form = document.getElementById('lead-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.className = 'form-status';
+    statusEl.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      statusEl.className = 'form-status success';
+      statusEl.textContent = 'Message sent. We will reach out shortly.';
+      form.reset();
+    } catch (err) {
+      statusEl.className = 'form-status error';
+      statusEl.textContent = 'Sorry, something went wrong. Please try again.';
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 </script>
 </body>
